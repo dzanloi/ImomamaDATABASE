@@ -21,12 +21,15 @@
 						alert('Username is already existing');
 				  </script>";
 		}else if($row[3] != $pwd) {
+
 			echo "<script language='javascript'>
 						alert('Incorrect password');
 				  </script>";
 		}else{
-			$_SESSION['username']=$row[0];
-			header('location: dashboard.php');
+      	$_SESSION['username']=$row[0];
+      // $row=mysqli_fetch_assoc($result);
+		
+			header("location: dashboard.php?data=".$row['username']);
       exit();
 		}
 	}
@@ -59,6 +62,8 @@
   
   <body>
 
+    <!-- <img src="backgroundfinal.png" alt="asdasd" id="background"> -->
+
     <!-- THIS IS FOR NAVIGATION BAR ONLY -->
     <div class="navigations">
       <nav>
@@ -80,7 +85,6 @@
           </div>
       </nav>
     </div>
-
 
     <div class="landing_page">
       <div class="header">

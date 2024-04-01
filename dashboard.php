@@ -1,3 +1,13 @@
+<?php 
+  include 'connect.php';
+?>
+<?php
+$data=$_GET['data'];
+$sql= "SELECT * FROM tbluseraccount WHERE accid='$data'";
+$result = mysqli_query($connection, $sql);
+$row=mysqli_fetch_assoc($result);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +23,25 @@
         <div class="sidebar">
             <div class="profile">
                 <div class="profile-img-box">
-                    <img src="images/leah.png" alt="profilepic">
+                    <?php
+                 
+                    echo "<img src=images/" .$row['picture']." alt=profilepic>";
+                    ?>
+                    <!-- <img src="images/jl.jpg" alt="profilepic"> -->
                 </div>
-                <h3 class="name">Leah Barbaso</h3>
+               
+                    <?php
+                   
+                        if($result){
+                            
+                            echo  "<h3 class=name>".$row['username']. "</h3>";
+                        }
+                      
+
+
+                    ?>
+                
+             
                 <p class="desc">New</p>
             </div>
 

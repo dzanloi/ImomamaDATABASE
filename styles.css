@@ -21,7 +21,13 @@ body {
     /* background-color: white; */
     max-width: 100%;
     min-width: 65%;
+}
+#background {
+    background-size: cover;
+    background-repeat: no-repeat; 
+    position: fixed;
     overflow-x: hidden;
+    width: 100%;
 }
 
 /* START OF NAVIGATION BAR CSS */
