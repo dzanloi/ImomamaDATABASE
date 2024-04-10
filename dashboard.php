@@ -112,7 +112,7 @@
                                 while($row=mysqli_fetch_assoc($result)) {
                                     echo '<tbody>
                                     <tr>
-                                    <td><a href="profile.php?data='.$row['useraccountid'].'">'.$row['username'].'</a></td>
+                                    <td><a href="profilepage.php?data='.$row['useraccountid'].'">'.$row['username'].'</a></td>
                                     <td>'.$row['useraccountid'].'</td>
                                     </tr>
                                     </tbody>';

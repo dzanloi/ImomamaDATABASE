@@ -33,22 +33,38 @@ body {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
 }
 
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, .2);
+}
+
 .profile {
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    max-width: 800px;
-    margin: 2rem auto;
+    /* margin: 2rem auto; */
+}
+.profilePicName {
+    display: flex;
+    margin-bottom: 2rem;
 }
 
 .profile-header {
-    display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    padding: 1rem;
+    /* padding: 1rem; */
     /* background-color: #f2f2f2; */
 }
 
 .profile-image {
+    /* justify-content: center;
+    align-items: center; */
+
     width: 150px;
     height: 150px;
     object-fit: cover;
@@ -56,13 +72,16 @@ body {
 }
 
 .profile-info {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
     flex: 1;
     margin-left: 1rem;
 }
 
 .profile-name {
     font-size: 2rem;
-    margin-bottom: 0.5rem;
+    /* margin-bottom: 0.5rem; */
 }
 
 .profile-bio {
@@ -73,7 +92,7 @@ body {
 .profile-stats {
     display: flex;
     justify-content: space-around;
-    margin: 1.5rem 0;
+    margin: 2rem 0;
 }
 
 .profile-stat {
@@ -125,4 +144,37 @@ body {
 .profile-post-content p {
     font-size: 1.2rem;
     color: #666;
+}
+
+
+
+
+
+/* circles */
+.circle-1 {
+    height: 200px;
+    width: 200px;
+    background-color: aqua;
+    position: absolute;
+    border-radius: 50%;
+    top: 1%;
+    right: 7%;
+}
+.circle-2 {
+    height: 300px;
+    width: 300px;
+    background-color: #d3dfdb;
+    position: absolute;
+    border-radius: 50%;
+    bottom: -5%;
+    left: 5%;
+}
+.circle-3 {
+    height: 100px;
+    width: 100px;
+    background-color: #35d19d;
+    position: absolute;
+    border-radius: 50%;
+    bottom: 65%;
+    left: 40%;
 }
