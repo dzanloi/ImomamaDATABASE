@@ -1,13 +1,7 @@
 <?php 
   include 'connect.php';
 ?>
-<?php
-$data=$_GET['data'];
-$sql= "SELECT * FROM tbluseraccount WHERE accid='$data'";
-$result = mysqli_query($connection, $sql);
-$row=mysqli_fetch_assoc($result);
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,30 +13,27 @@ $row=mysqli_fetch_assoc($result);
 </head>
 <body>
 
+    <?php
+        $data=$_GET['data'];
+    ?>
+
     <div class="dashboard">
         <div class="sidebar">
             <div class="profile">
                 <div class="profile-img-box">
                     <?php
-                 
-                    echo "<img src=images/" .$row['picture']." alt=profilepic>";
+                        echo "<img src=images/" .$row['picture']." alt=profilepic>";
                     ?>
                     <!-- <img src="images/jl.jpg" alt="profilepic"> -->
                 </div>
-               
                     <?php
-                   
+                        $sql = "SELECT * FROM tbluseraccount WHERE useraccountid='$data'"; 
+                        $result = mysqli_query($connection,$sql);  
                         if($result){
-                            
-                            echo  "<h3 class=name>".$row['username']. "</h3>";
+                            $row=mysqli_fetch_assoc( $result );
+                            echo "<h3  class=name>" . $row['username'] . "</h3>";
                         }
-                      
-
-
                     ?>
-                
-             
-                <p class="desc">New</p>
             </div>
 
             <div class="sidebar-items">
@@ -67,7 +58,12 @@ $row=mysqli_fetch_assoc($result);
                     <h4 class="si-name">Chat Request</h4>
                 </a>
 
-                <a href="#" class="sidebar-item">
+                <a href="settings.php?data=<?php
+                                $result = mysqli_query($connection,$sql);  
+                                if($result){
+                                    $row=mysqli_fetch_assoc( $result );
+                                    echo $row['userid'];
+                                }?>" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/settings.png" alt="">
                     </div>
@@ -95,60 +91,46 @@ $row=mysqli_fetch_assoc($result);
         <div class="main">
             <div class="header">
                 <h1>Date</h1>
-                <div class="search-bar">
-                    <input type="text" placeholder="Search...">
-                    <button>Search</button>
+                <div class="searchdiv">
+                <form class="search-bar" method="post">
+                    <input type="text" placeholder="Search..." name="txtSearch">
+                    
+                    <button name="btnSearch">Search</button>
+                </form>
+                
+               
+                    <table class="table">
+                        <?php
+                        if(isset($_POST['btnSearch'])){
+                            $search=$_POST['txtSearch'];
+                            // $sql="Select * from 'useraccount' where acctid= '$search' or username= '$search'";
+                            $sql="SELECT * FROM tbluseraccount WHERE useraccountid = '$search' OR username = '$search'";
+
+                            $result=mysqli_query($connection,$sql);
+                            if($result){
+                            if(mysqli_num_rows($result) >0){
+                                while($row=mysqli_fetch_assoc($result)) {
+                                    echo '<tbody>
+                                    <tr>
+                                    <td><a href="profile.php?data='.$row['useraccountid'].'">'.$row['username'].'</a></td>
+                                    <td>'.$row['useraccountid'].'</td>
+                                    </tr>
+                                    </tbody>';
+                                }
+                            } }else{
+                                echo  "No Record Found!";
+                            }
+                        }?>
+                
+              
+                    </table>
                 </div>
 
                 <div class="profile">
                     <!-- TODO: BUTNGI PROFILE -->
                 </div>
             </div>
-            <!-- <div class="skill">
-                <div class="skill-content">
-                    <div class="skill-img-box">
-                        <img src="assets/images/read.png" alt="">
-                    </div>
-                    <div class="skill-detail">
-                        <h2 class="skill-title">Reading</h2>
-                        <p>211 Days</p>
-                        <div class="skill-progress">
-                            <div class="progress progress-1"></div>
-                        </div>
-                    </div>
-                </div>
-                <h2 class="percent">60%</h2>
-            </div>
-            <div class="skill">
-                <div class="skill-content">
-                    <div class="skill-img-box">
-                        <img src="assets/images/writing.png" alt="">
-                    </div>
-                    <div class="skill-detail">
-                        <h2 class="skill-title">Writing</h2>
-                        <p>114 Days</p>
-                        <div class="skill-progress">
-                            <div class="progress progress-2"></div>
-                        </div>
-                    </div>
-                </div>
-                <h2 class="percent">40%</h2>
-            </div>
-            <div class="skill">
-                <div class="skill-content">
-                    <div class="skill-img-box">
-                        <img src="assets/images/speaking.png" alt="">
-                    </div>
-                    <div class="skill-detail">
-                        <h2 class="skill-title">Speaking</h2>
-                        <p>371 Days</p>
-                        <div class="skill-progress">
-                            <div class="progress progress-3"></div>
-                        </div>
-                    </div>
-                </div>
-                <h2 class="percent">80%</h2>
-            </div> -->
+            
         </div>
     </div>
 

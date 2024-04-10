@@ -1,15 +1,12 @@
-
-
 <?php 
   include 'connect.php';
 ?>
-
 <?php	
 	if(isset($_POST['btnLogin'])){
 		$uname=$_POST['login-user'];
 		$pwd=$_POST['login-txtpassword'];
 		//check tbluseraccount if username is existing
-		$sql ="Select * from tbluseraccount where username='".$uname."'";
+		$sql ="SELECT * FROM tbluseraccount WHERE username='".$uname."'";
 		
 		$result = mysqli_query($connection,$sql);	
 		
@@ -18,18 +15,18 @@
 		
 		if($count== 0){
 			echo "<script language='javascript'>
-						alert('Username is already existing');
+						alert('username not existing.');
 				  </script>";
 		}else if($row[3] != $pwd) {
-
 			echo "<script language='javascript'>
 						alert('Incorrect password');
 				  </script>";
 		}else{
-      	$_SESSION['username']=$row[0];
-      // $row=mysqli_fetch_assoc($result);
-		
-			header("location: dashboard.php?data=".$row['username']);
+			$_SESSION['username']=$row[0];
+			// header('location: dashboard.php');
+      $rows=mysqli_fetch_assoc($result);
+      header("Location: dashboard.php?data=" . $row['useraccountid']);
+    
       exit();
 		}
 	}
@@ -160,7 +157,7 @@
                 <!-- <img src="images/mail.png" id="logos"alt=""> -->
                 <input type="email" id="email" name="txtemail" placeholder="Email"><br>
 
-          </div>
+              </div>
           <div class="toflex">
                 <img src="images/woman.png" id="gender"alt="">
                 <select id="txtgender" name="txtgender">
@@ -244,7 +241,6 @@
 
 
 <?php	
-
     if(isset($_POST['btnRegister'])){		
         //retrieve data from form and save the value to a variable
         //for tbluserprofile
@@ -256,29 +252,35 @@
         $email = $_POST['txtemail'];		
         $uname = $_POST['txtusername'];
         $pword = $_POST['txtpassword'];
-        $sql2 = "SELECT * FROM tbluseraccount WHERE username='$uname' AND emailadd = '$email'";
+        $sql2 = "SELECT * FROM tbluseraccount WHERE username='$uname'";
         $result = mysqli_query($connection, $sql2);
         $row = mysqli_num_rows($result);
-        
         if($row == 0){
-        //save data to tbluserprofile			
-        $sql1 = "INSERT INTO tbluserprofile (firstname, lastname, gender) VALUES ('$fname', '$lname', '$gender')";
-        mysqli_query($connection, $sql1);
+
         
-        //Check tbluseraccount if username is already existing. Save info if false. Prompt msg if true.
+        //save data to tbluserprofile			
+        $sql1 = "INSERT INTO tbluser (firstname, lastname, gender) VALUES ('$fname', '$lname', '$gender')";
+        mysqli_query($connection, $sql1);
        
-            // $last_insert_id = mysqli_insert_id($connection);
-            $sql = "INSERT INTO tbluseraccount (emailadd, username, password) VALUES ('$email', '$uname', '$pword')";
+      
+        //Check tbluseraccount if username is already existing. Save info if false. Prompt msg if true.
+          $user_id =mysqli_insert_id($connection);
+          
+          
+         
+            $sql = "INSERT INTO tbluseraccount (email,username,password,userid) VALUES ('$email', '$uname', '$pword','$user_id')";
             mysqli_query($connection, $sql);
-            echo "<script language='javascript'>
-                        alert('New record saved.');
-                  </script>";
-            //header("location: index.php");
+            
+            // echo "<script language='javascript'>
+            //             alert('New record saved.');
+            //       </script>";
+           
+            // header("location: index.php?data='.$rows['acctid'].'");
         } else {
             echo "<script language='javascript'>
-                        alert('Username/email already existing');
+                        alert('Username already existing');
                   </script>";
         }    
     }
-?> 
+?>  
 

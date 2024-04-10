@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+:root { /* START COPYING HERE */
+    --pink: #EE9CA7;
+    --color2: #f9004fd3;
+    --color3: #800000;
+    --fulvous: #D78521;
+    --eggshell: #E0E0CE;
+    --cardinal: #AD343E;
+    --night: #12130F;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+a {
+    text-decoration: none;
+}
+.circular-image {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+.navbar{
+    width: 20%;
+    height: 700px;
+    padding: 50px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.circular-image2{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.right-side{
+    size: 700px;
+    width: 80%
+
+   
+}
+.profile-pic{
+    display: flex;
+  
+    /* justify-content: center; */
+}
+h2{
+    padding-top: 5px;
+    padding-left: 5px;
+}
+.toflex{
+
+    display: flex;
+    justify-content: space-between;
+}
+.myaccount{
+    /* padding-left: 100px;; */
+    width: 100%;
+}
+.myaccount-display{
+    padding-left: 30px;
+    padding-right: 30%;;
+}
+.myaccount-form{
+    display: none;
+}
+button{
+    background-color: wheat;
+    color: black;
+    height: 50px;
+}
+.href{
+   text-decoration: none;
+   margin-bottom: 50px;
+   padding-bottom: 100px;
+
+}
+
+
+update-email-form
+update-name-form
+update-password-form

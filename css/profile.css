@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root{
+    /* --color2: #f9004fd3; */
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(43deg, #ffcc70 0%, #f9004f 70%, #ad343e 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.dashboard {
+    width: 90%;
+    min-height: 95vh;
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, .5), rgba(255, 255, 255, .2));
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    border-radius: 1rem;
+    overflow: hidden;
+    backdrop-filter: blur(5px);
+    border: 2px solid rgba(255, 255, 255, .5);
+    z-index: 3;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.3);
+}
+
+.profile {
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+.profile-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    /* background-color: #f2f2f2; */
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-info {
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.profile-name {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-bio {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.profile-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5rem 0;
+}
+
+.profile-stat {
+    text-align: center;
+    flex: 1;
+}
+
+.profile-stat-count {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.profile-stat-title {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.profile-posts-title {
+    font-size: 2rem;
+    margin: 1rem;
+}
+
+.profile-post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+}
+
+.profile-post-content {
+    margin-left: 1rem;
+    flex: 1;
+}
+
+.profile-post-content img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.profile-post-content h2 {
+    margin-bottom: 0.5rem;
+}
+
+.profile-post-content p {
+    font-size: 1.2rem;
+    color: #666;
+}
