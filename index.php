@@ -50,7 +50,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost&family=Red+Hat+Display&family=Wix+Madefor+Display:wght@600&display=swap" rel="stylesheet">
 
-
+  
     <title>TEKNOPIDU</title>
 
     <script src="js/script.js"></script>
@@ -109,7 +109,7 @@
         <div class="emailfield">
           <h3></h3>
           
-          <p>Need and account? <a href="http://">Sign up</a></p>
+          <p>Need an account? <a onclick="Register()">Sign up</a></p>
         </div>
         <div class="toflex">
                 <img src="images/user.png" id="logos"alt="">

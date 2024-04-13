@@ -2,16 +2,16 @@
   include 'connect.php';
 ?>
  <?php
-           if(isset($_POST['btnDelete'])){
-            $data = $_GET['data'];
-            $sql = "DELETE FROM tbluseraccount WHERE userid='$data'";
-            $sql2 = "DELETE FROM tbluser WHERE userid='$data'";
-            $result = mysqli_query($connection, $sql);
-            $result2 = mysqli_query($connection, $sql2);
-            echo "<script>alert('Account Deleted');</script>";
-            header("Location: index.php");
-        }
-            ?>
+  if(isset($_POST['btnDelete'])){
+    $data = $_GET['data'];
+    $sql = "DELETE FROM tbluseraccount WHERE userid='$data'";
+    $sql2 = "DELETE FROM tbluser WHERE userid='$data'";
+    $result = mysqli_query($connection, $sql);
+    $result2 = mysqli_query($connection, $sql2);
+    echo "<script>alert('Account Deleted');</script>";
+    header("Location: index.php");
+  }
+?>
 
 
 

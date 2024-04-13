@@ -318,6 +318,7 @@ footer {
 .emailfield a {
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 /* #login input {
     width: 100%;

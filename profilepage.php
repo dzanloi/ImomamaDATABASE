@@ -17,7 +17,6 @@
             <div class="profile">
                 <?php
                     $data=$_GET['data'];
-            
                 ?>
                 
                 <header class="profile-header">
@@ -25,15 +24,17 @@
                         <img src="https://via.placeholder.com/150" alt="User profile picture" class="profile-image">
                         <div class="profile-info">
                             <h1 class="profile-name">
-                            <?php
-                            $sql="SELECT * FROM tbluseraccount WHERE useraccountid='$data'";
-                            $result=mysqli_query($connection,$sql);
-                            if($result){
-                                $row=mysqli_fetch_assoc($result);
-                                echo $row["username"];
-                            }else{ echo "cannot be fetched";
-                            }
-                            ?>Yana</h1>
+                                <?php
+                                    $sql="SELECT * FROM tbluseraccount WHERE useraccountid='$data'";
+                                    $result=mysqli_query($connection,$sql);
+                                    if($result){
+                                        $row=mysqli_fetch_assoc($result);
+                                        echo $row["username"];
+                                    }else{ 
+                                        echo "cannot be fetched";
+                                    }
+                                ?>
+                            </h1>
                         </div>
 
                     </div>
