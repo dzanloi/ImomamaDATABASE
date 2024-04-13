@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-:root{
-    /* --color2: #f9004fd3; */
+:root { /* START COPYING HERE */
+    --pink: #EE9CA7;
+    --color2: #f9004fd3;
+    --color3: #800000;
+    --fulvous: #D78521;
+    --eggshell: #E0E0CE;
+    --cardinal: #AD343E;
+    --night: #12130F;
 }
 * {
     box-sizing: border-box;
@@ -82,6 +88,7 @@ body {
 .profile-name {
     font-size: 2rem;
     /* margin-bottom: 0.5rem; */
+    color: var(--color2);
 }
 
 .profile-bio {
@@ -103,16 +110,18 @@ body {
 .profile-stat-count {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    color: var(--color2);
 }
 
 .profile-stat-title {
     font-size: 1.2rem;
-    color: #666;
+    color: var(--cardinal);
 }
 
 .profile-posts-title {
     font-size: 2rem;
-    margin: 1rem;
+    margin: 2rem;
+    color: var(--color2);
 }
 
 .profile-post {

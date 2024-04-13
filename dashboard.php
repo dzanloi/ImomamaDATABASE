@@ -22,16 +22,16 @@
             <div class="profile">
                 <div class="profile-img-box">
                     <?php
-                        echo "<img src=images/" .$row['picture']." alt=profilepic>";
+                        echo "<img src=images/" .$row['picture']. " alt = profilepic>";
                     ?>
-                    <!-- <img src="images/jl.jpg" alt="profilepic"> -->
+                    <img src="images/jl.jpg" alt="profilepic">
                 </div>
                     <?php
                         $sql = "SELECT * FROM tbluseraccount WHERE useraccountid='$data'"; 
                         $result = mysqli_query($connection,$sql);  
                         if($result){
                             $row=mysqli_fetch_assoc( $result );
-                            echo "<h3  class=name>" . $row['username'] . "</h3>";
+                            echo "<h1  class=name>" . $row['username'] . "</h1>";
                         }
                     ?>
             </div>
