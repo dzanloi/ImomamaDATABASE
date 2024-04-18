@@ -76,7 +76,7 @@
                     </div>
                     <h4 class="si-name">Chat Request</h4>
                 </a>
-
+                                                
                 <a href="settings2.php?data=<?php
                                                 $result = mysqli_query($connection,$sql);  
                                                 if($result){

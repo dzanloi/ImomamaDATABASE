@@ -1,5 +1,6 @@
 <?php 
   include 'connect.php';
+  $data=$_GET['data'];
 ?>
 
 
@@ -14,10 +15,6 @@
 </head>
 <body>
 
-    <?php
-        $data=$_GET['data'];
-    ?>
-
     <div class="dashboard">
         <div class="sidebar">
             <div class="profile">
@@ -28,9 +25,9 @@
                     <img src="images/jl.jpg" alt="profilepic">
                 </div>
                     <?php
-                        $sql = "SELECT * FROM tbluseraccount WHERE useraccountid='$data'"; 
+                        $sql = "SELECT * FROM tbluseraccount WHERE userid='$data'"; 
                         $result = mysqli_query($connection,$sql);  
-                        if($result){
+                        if($result) {
                             $row=mysqli_fetch_assoc( $result );
                             echo "<h1  class=name>" . $row['username'] . "</h1>";
                         }
@@ -38,23 +35,18 @@
             </div>
 
             <div class="sidebar-items">
-                <a href="dashboard.php?data=<?php
-                                $result = mysqli_query($connection,$sql);  
-                                if($result){
-                                    $row=mysqli_fetch_assoc( $result );
-                                    echo $row['useraccountid'];
-                                }?>" class="sidebar-item">
+                <a href="dashboard.php" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/heart.png" alt="">
                     </div>
                     <h4 class="si-name">Matches</h4>
                 </a>
 
-                <a href="preference.php?data=<?php
+                <a href="preferece.php?data=<?php
                                 $result = mysqli_query($connection,$sql);  
                                 if($result){
                                     $row=mysqli_fetch_assoc( $result );
-                                    echo $row['useraccountid'];
+                                    echo $row['userid'];
                                 }?>" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/preference.png" alt="">
@@ -69,11 +61,11 @@
                     <h4 class="si-name">Chat Request</h4>
                 </a>
 
-                <a href="settings2.php?data=<?php
+                <a href="settings.php?data=<?php
                                 $result = mysqli_query($connection,$sql);  
                                 if($result){
                                     $row=mysqli_fetch_assoc( $result );
-                                    echo $row['useraccountid'];
+                                    echo $row['userid'];
                                 }?>" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/settings.png" alt="">
@@ -89,13 +81,6 @@
                 </a>
             </div>
 
-            <div class="pro">
-                <div class="pro-img-box">
-                    <img src="images/edit.png" alt="">
-                </div>
-                <h4 class="pro-text">Edit <br> Preference</h4>
-            </div>
-
         </div>
 
         <!-- RIGHT SIDE -->
@@ -105,20 +90,26 @@
             </div>
 
             <!-- 1st ROW -->
-            <div class="details">
-                <input type="text" id="firstname" placeholder="Prefered gender" name="txtfirstname"><br>
-                <input type="text" id="minimumage"  placeholder="Minimum age" name="txtlastname"><br>
-                <input type="text" id="maximumage"  placeholder="Maximum age" name="txtlastname"><br>
-                <input type="text" id="preferedgender" placeholder="Prefered gender" name="txtfirstname"><br>
-                <input type="text" id="preferedcourse" placeholder="Prefered course" name="txtfirstname"><br>
+            <form method="post" class="details">
+
+            <select name="preferedgender" id="cars">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="both">Both</option>
+            </select>
+                <!-- <input type="text" id="preferedgender" placeholder="Prefered gender" name="preferedgender"><br> -->
+                <input type="number" id="minimumage"  placeholder="Minimum age" name="minage"><br>
+                <input type="number" id="maximumage"  placeholder="Maximum age" name="maxage"><br>
+                <input type="text" id="preferedcourse" placeholder="Prefered course" name="course"><br>
                 
-                <div class="pro" name=btnRegister id="submit" value="Edit preference">
-                    <div class="pro-img-box">
+                <input type="submit"  name=btnRegister id="submit" value="update preference">
+                    <!-- <div class="pro-img-box">
                         <img src="images/edit.png" alt="">
-                    </div>
-                    <h4 class="pro-text">Edit <br> Preference</h4>
-                </div>
-            </div>
+                    </div> -->
+                    <!-- <h4 class="pro-text">Edit <br> Preference</h4> -->
+                <!-- </div> -->
+            </from>
+
 
         </div>
         <!-- END OF RIGHT SIDE -->
@@ -129,3 +120,19 @@
     <div class="circle-3"></div>
 </body>
 </html>
+
+<?php	
+    if(isset($_POST['btnRegister'])){		
+        //retrieve data from form and save the value to a variable
+        //for tbluserprofile
+        $gender = $_POST['preferedgender'];		
+        $minage = $_POST['minage'];
+        $maxage = $_POST['maxage'];
+        $course = $_POST['course'];
+
+        
+        $sql2 = "UPDATE tblpreference SET preferedgender = '$gender', preferedminimumage = '$minage', preferedmaximumage = '$maxage', preferedcourse = '$course' WHERE userid = '$data'";
+        $result = mysqli_query($connection, $sql2);
+        
+    }
+?>  
