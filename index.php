@@ -25,7 +25,7 @@
 			$_SESSION['username']=$row[0];
 			// header('location: dashboard.php');
       $rows=mysqli_fetch_assoc($result);
-      header("Location: dashboard.php?data=" . $row['useraccountid']);
+      header("Location: dashboard.php?data=" . $row['userid']);
     
       exit();
 		}

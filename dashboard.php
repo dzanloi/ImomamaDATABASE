@@ -1,5 +1,6 @@
 <?php 
   include 'connect.php';
+  $data=$_GET['data'];
 ?>
 
 
@@ -14,10 +15,6 @@
 </head>
 <body>
 
-    <?php
-        $data=$_GET['data'];
-    ?>
-
     <div class="dashboard">
         <div class="sidebar">
             <div class="profile">
@@ -28,7 +25,7 @@
                     <img src="images/jl.jpg" alt="profilepic">
                 </div>
                     <?php
-                        $sql = "SELECT * FROM tbluseraccount WHERE useraccountid='$data'"; 
+                        $sql = "SELECT * FROM tbluseraccount WHERE userid='$data'"; 
                         $result = mysqli_query($connection,$sql);  
                         if($result){
                             $row=mysqli_fetch_assoc( $result );
@@ -39,12 +36,7 @@
 
             <div class="sidebar-items">
                 <!-- MATCHES/DASHBOARD -->
-                <a href="dashboard.php?data=<?php
-                                $result = mysqli_query($connection,$sql);  
-                                if($result){
-                                    $row=mysqli_fetch_assoc( $result );
-                                    echo $row['useraccountid'];
-                                }?>" class="sidebar-item">
+                <a href="" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/heart.png" alt="">
                     </div>
@@ -57,7 +49,7 @@
                                 $result = mysqli_query($connection,$sql);  
                                 if($result){
                                     $row=mysqli_fetch_assoc( $result );
-                                    echo $row['useraccountid'];
+                                    echo $row['userid'];
                                 }?>" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/preference.png" alt="">
@@ -79,7 +71,7 @@
                                 $result = mysqli_query($connection,$sql);  
                                 if($result){
                                     $row=mysqli_fetch_assoc( $result );
-                                    echo $row['useraccountid'];
+                                    echo $row['userid'];
                                 }?>" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/settings.png" alt="">

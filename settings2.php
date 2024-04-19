@@ -1,17 +1,22 @@
 <?php 
   include 'connect.php';
+
+  
+?>
+<?php 
+
+  $data = $_GET['data'];
 ?>
 
-<?php
-  if(isset($_POST['btnDelete'])){
-    $data = $_GET['data'];
-    $sql = "DELETE FROM tbluseraccount WHERE userid='$data'";
-    $sql2 = "DELETE FROM tbluser WHERE userid='$data'";
-    $result = mysqli_query($connection, $sql);
-    $result2 = mysqli_query($connection, $sql2);
-    echo "<script>alert('Account Deleted');</script>";
-    header("Location: index.php");
-  }
+
+ <?php
+    if(isset($_POST['btndelete'])){
+        $data = $_GET['data'];
+        $sql2 = "DELETE FROM tbluser WHERE userid='$data'";
+        $result2 = mysqli_query($connection, $sql2);
+        echo "<script>alert('Account Deleted');</script>";
+        header("Location: index.php");
+        }
 ?>
 
 
@@ -36,7 +41,7 @@
                     <img src="images/jl.jpg" alt="profilepic">
                 </div>
                     <?php
-                        $sql = "SELECT * FROM tbluseraccount WHERE useraccountid='$data'"; 
+                        $sql = "SELECT * FROM tbluseraccount WHERE userid='$data'"; 
                         $result = mysqli_query($connection,$sql);  
                         if($result){
                             $row=mysqli_fetch_assoc( $result );
@@ -50,7 +55,7 @@
                                                 $result = mysqli_query($connection,$sql);  
                                                 if($result){
                                                     $row=mysqli_fetch_assoc( $result );
-                                                    echo $row['useraccountid'];
+                                                    echo $row['userid'];
                                                 }?>" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/heart.png" alt="">
@@ -58,11 +63,12 @@
                     <h4 class="si-name">Matches</h4>
                 </a>
 
+                <!-- PREFERENCE -->
                 <a href="preference.php?data=<?php
                                                 $result = mysqli_query($connection,$sql);  
                                                 if($result){
                                                     $row=mysqli_fetch_assoc( $result );
-                                                    echo $row['useraccountid'];
+                                                    echo $row['userid'];
                                                 }?>" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/preference.png" alt="">
@@ -76,13 +82,9 @@
                     </div>
                     <h4 class="si-name">Chat Request</h4>
                 </a>
-                                                
-                <a href="settings2.php?data=<?php
-                                                $result = mysqli_query($connection,$sql);  
-                                                if($result){
-                                                    $row=mysqli_fetch_assoc( $result );
-                                                    echo $row['useraccountid'];
-                                                }?>" class="sidebar-item">
+                                             
+                <!-- SETTINGS -->
+                <a href="" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/settings.png" alt="">
                     </div>
@@ -102,7 +104,6 @@
                 <div class="pro-img-box">
                     <img src="images/edit.png" alt="">
                 </div>
-                <h4 class="pro-text">Edit <br> Preference</h4>
             </div>
         </div>
 
@@ -114,31 +115,56 @@
 
             <!-- 1st ROW -->
             <div class="details">
-                <div class="Fields">
-                    <p>Username</p>
-                    <input type="text" placeholder="Usernamesauser">
-                </div>
-    
-                <div class="Fields">
-                    <p>Email</p>
-                    <input type="text" placeholder="Emailsauser">
-                </div>
+                <form class="Fields" method="post">
+                    <input type="text" placeholder="Usernamesauser" name="username">
+                    <button class="pro" type="submit" name="btnchangeusername">
+                        <div class="pro-img-box" >
+                            <img src="images/edit.png" alt="">
+                        </div>
+                    </button>
+                </form>
 
+                <form class="Fields" method="post">
+                    <input type="text" placeholder="Email" name="email">
+                    <button class="pro" type="submit" name="btnchangeemail">
+                        <div class="pro-img-box" >
+                            <img src="images/edit.png" alt="">
+                        </div>
+                    </button>
+                </form>
+    
             </div>
 
             <!-- 2nd ROW -->
-            <div class="details">
-                <div class="Fields">
-                    <p>Password</p>
-                    <input type="password" placeholder="Usernamesauser">
-                </div>
-    
-                <div class="Fields">
-                    <p>Confirm Password</p>
-                    <input type="password" placeholder="Emailsauser">
+            <form class="details" method="post">
+            <div class="Fields">
+
+
+                <input type="password" placeholder="Password"  name="password">
+                    <button class="pro" type="submit" name="btnchangeusername" style="visibility: hidden; ">
+                        <div class="pro-img-box" >
+                            <img src="images/edit.png" alt="">
+                        </div>
+                    </button>
                 </div>
 
-            </div>
+
+
+                <div class="Fields">
+                    <input type="password" placeholder="Confirm Password" name="cpassword">
+                    <button class="pro" type="submit" name="btnchangepassword">
+                        <div class="pro-img-box" >
+                            <img src="images/edit.png" alt="">
+                        </div>
+                    </button>
+                </div>
+
+                <button class="pro" type="submit" name="btndelete">
+                    <p style="color: white;">DELETE ACCOUNT</p>        
+                </button>
+    
+
+            </form>
             
         </div>
         <!-- END OF RIGHT SIDE -->
@@ -149,3 +175,45 @@
     <div class="circle-3"></div>
 </body>
 </html>
+
+<?php	
+	if(isset($_POST['btnchangeusername'])){
+		$uname=$_POST['username'];
+        if($uname==""){
+
+        }
+        else{
+		$sql ="UPDATE tbluseraccount SET username = '".$uname."' WHERE userid='".$data."'";
+		$result = mysqli_query($connection,$sql);	
+	}
+}
+ 
+ 
+?>
+ 
+<?php	
+	if(isset($_POST['btnchangeemail'])){
+		$email=$_POST['email'];
+		$sql ="UPDATE tbluseraccount SET email = '".$email."' WHERE userid='".$data."'";
+		$result = mysqli_query($connection,$sql);				
+	}
+ 
+ 
+?>
+ 
+<?php	
+	if(isset($_POST['btnchangepassword'])){
+
+		$password=$_POST['password'];
+		$cpassword=$_POST['cpassword'];
+		if($password==$cpassword){
+            $sql ="UPDATE tbluseraccount SET password = '".$cpassword."' WHERE userid='".$data."'";
+            $result = mysqli_query($connection,$sql);	
+		}else{
+            
+        }
+				
+	}
+ 
+ 
+?>

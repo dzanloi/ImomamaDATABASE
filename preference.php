@@ -34,26 +34,34 @@
                     ?>
             </div>
 
+            <!-- MATCHES -->
             <div class="sidebar-items">
-                <a href="dashboard.php" class="sidebar-item">
+                <a href="dashboard.php?data=<?php
+                                                $result = mysqli_query($connection,$sql);  
+                                                if($result){
+                                                    $row=mysqli_fetch_assoc( $result );
+                                                    echo $row['userid'];
+                                                }?>" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/heart.png" alt="">
                     </div>
                     <h4 class="si-name">Matches</h4>
                 </a>
 
+            <!-- PREFERENCE -->
                 <a href="preferece.php?data=<?php
-                                $result = mysqli_query($connection,$sql);  
-                                if($result){
-                                    $row=mysqli_fetch_assoc( $result );
-                                    echo $row['userid'];
-                                }?>" class="sidebar-item">
+                                                $result = mysqli_query($connection,$sql);  
+                                                if($result){
+                                                    $row=mysqli_fetch_assoc( $result );
+                                                    echo $row['userid'];
+                                                }?>" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/preference.png" alt="">
                     </div>
                     <h4 class="si-name active">Preferences</h4>
                 </a>
 
+                <!-- CHAT REQUEST -->
                 <a href="#" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/chat_req.png" alt="">
@@ -61,18 +69,20 @@
                     <h4 class="si-name">Chat Request</h4>
                 </a>
 
-                <a href="settings.php?data=<?php
-                                $result = mysqli_query($connection,$sql);  
-                                if($result){
-                                    $row=mysqli_fetch_assoc( $result );
-                                    echo $row['userid'];
-                                }?>" class="sidebar-item">
+                <!-- SETTINGS -->
+                <a href="settings2.php?data=<?php
+                                                $result = mysqli_query($connection,$sql);  
+                                                if($result){
+                                                    $row=mysqli_fetch_assoc( $result );
+                                                    echo $row['userid'];
+                                                }?>" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/settings.png" alt="">
                     </div>
                     <h4 class="si-name">Settings</h4>
                 </a>
 
+                <!-- LOGOUT -->
                 <a href="logout.php?logout=true" class="sidebar-item">
                     <div class="si-img-box">
                         <img src="images/logout.png" alt="">
@@ -81,6 +91,13 @@
                 </a>
             </div>
 
+            <div class="pro">
+                <div class="pro-img-box">
+                    <img src="images/edit.png" alt="">
+                </div>
+                <h4 class="pro-text">Edit <br> Preference</h4>
+            </div>
+            
         </div>
 
         <!-- RIGHT SIDE -->
