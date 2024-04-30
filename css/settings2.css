@@ -102,8 +102,8 @@ img {
 .pro-img-box {
     cursor: default;
     position: relative;
-    width: 40px;
-    height: 40px;
+    width: 20px;
+    height: 20px;
     margin-right: 1rem;
 }
 .pro {
@@ -129,13 +129,22 @@ img {
     height: max-content;
 }
 .details {
-    display: flex;
     width: 100%;
     margin-bottom: 5%;
 }
-.Fields {
+.details p {
+    margin: 0px 48px;
+}
+.passField{
     padding: 0px 3rem;
-    width: 50%;
+    width: 70%;
+}
+.Fields {
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    padding: 0px 3rem;
+    width: 70%;
 }
 .Fields p {
     margin: 5px 0px;
