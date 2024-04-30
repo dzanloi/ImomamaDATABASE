@@ -44,6 +44,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost&family=Red+Hat+Display&family=Wix+Madefor+Display&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +59,6 @@
 
   
   <body>
-
     <!-- <img src="backgroundfinal.png" alt="asdasd" id="background"> -->
 
     <!-- THIS IS FOR NAVIGATION BAR ONLY -->
@@ -136,23 +136,38 @@
       <div class="center">
      
         <form class="register-form" method="post" >
-       
-           
                <h1>Signup</h1>
-           
-           
-    
-              <!-- <label for="#email">Email</label><br> -->
-           
-            
-              <!-- <label for="txtgender">Gender</label> -->
-             
           
+              <!-- <label for="#email">Email</label><br> -->
+              <!-- <label for="txtgender">Gender</label> -->
               <!-- <label for="#firstname">first name</label><br> -->
-              <input type="text" id="firstname" placeholder="Firstname" name="txtfirstname"><br>
+              <!-- <input type="text" id="firstname" placeholder="Firstname" name="txtfirstname"> UCOMMENT IF NEC-->
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="txtfirstname"
+                  id="formId1"
+                  placeholder=""
+                />
+                <label for="formId1">First Name</label>
+              </div>
+              
+              <br>
               
               <!-- <label for="#lastname">last name</label><br> -->
-              <input type="text" id="lastname"  placeholder="Lastname" name="txtlastname"><br>
+              <!-- <input type="text" id="lastname"  placeholder="Lastname" name="txtlastname"><br> UNCOMMENT IF NEC-->
+              <div class="form-floating mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="txtlastname"
+                  id="formId1"
+                  placeholder=""
+                />
+                <label for="formId1">Last Name</label>
+              </div>
+              
               <div class="toflex">
                 <!-- <img src="images/mail.png" id="logos"alt=""> -->
                 <input type="email" id="email" name="txtemail" placeholder="Email"><br>
@@ -232,7 +247,6 @@
 
 
     </footer>
-
   </body>
 </html>
 
